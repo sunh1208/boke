@@ -9,7 +9,7 @@ export default class BlogItem extends Component {
                     <img src="; " alt="; " />
                 </div>
                 <div className="blog_item_contont">
-
+                    <h3>你好呀</h3>
                 </div>
             </div>
         )
