@@ -1,12 +1,23 @@
 import React from 'react';
 import './App.css';
-import Blogparticulars from './views/page/blogparticulars/blogparticulars.jsx'
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
+import config from './router/config';
+import router from './router'
 function App() {
+  let routes = router.router
+  // console.log(routes)
   return (
-    <div className="App">
-      <Blogparticulars></Blogparticulars>
-    </div>
-  );
+
+    <Router>
+      <Switch>
+        {
+          config(routes)
+        }
+      </Switch>
+    </Router>
+
+  )
+
 }
 
 export default App;

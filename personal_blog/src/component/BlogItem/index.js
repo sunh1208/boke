@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./index.scss"
+
 export default class BlogItem extends Component {
     render() {
         // let { item } = this.props
