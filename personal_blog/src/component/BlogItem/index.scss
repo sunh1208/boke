@@ -1,0 +1,27 @@
+.blogItem_item {
+    width: 800px;
+    display: flex;
+    margin: 30px auto;
+
+    .bolg_item_img {
+        width: 200px;
+        height: 200px;
+        box-sizing: border-box;
+        background: #f00;
+        margin-right: 50px;
+
+
+    }
+
+    .blog_item_contont {
+        text-align: left;
+        flex: 1;
+
+        p {
+            height: 100px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .blog_span_box {}
+    }
+}
