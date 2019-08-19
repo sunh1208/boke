@@ -1,10 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import BlogList from "./views/page/blogList/blogList.js"
 function App() {
   return (
     <div className="App">
+      <BlogList></BlogList>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
