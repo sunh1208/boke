@@ -25,31 +25,22 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-<<<<<<< HEAD
-
-const postcssNormalize = require('postcss-normalize');
-
-=======
 const eslint = require('eslint');
 
 const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
->>>>>>> shh
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
 
-<<<<<<< HEAD
-=======
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000'
 );
 
->>>>>>> shh
 // Check if TypeScript is setup
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
@@ -123,14 +114,6 @@ module.exports = function(webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
-<<<<<<< HEAD
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap,
-        },
-      });
-=======
       loaders.push(
         {
           loader: require.resolve('resolve-url-loader'),
@@ -145,7 +128,6 @@ module.exports = function(webpackEnv) {
           },
         }
       );
->>>>>>> shh
     }
     return loaders;
   };
@@ -207,12 +189,9 @@ module.exports = function(webpackEnv) {
               .replace(/\\/g, '/')
         : isEnvDevelopment &&
           (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
-<<<<<<< HEAD
-=======
       // Prevents conflicts when multiple Webpack runtimes (from different apps)
       // are used on the same page.
       jsonpFunction: `webpackJsonp${appPackageJson.name}`,
->>>>>>> shh
     },
     optimization: {
       minimize: isEnvProduction,
@@ -221,13 +200,8 @@ module.exports = function(webpackEnv) {
         new TerserPlugin({
           terserOptions: {
             parse: {
-<<<<<<< HEAD
-              // we want terser to parse ecma 8 code. However, we don't want it
-              // to apply any minfication steps that turns valid ecma 5 code
-=======
               // We want terser to parse ecma 8 code. However, we don't want it
               // to apply any minification steps that turns valid ecma 5 code
->>>>>>> shh
               // into invalid ecma 5 code. This is why the 'compress' and 'output'
               // sections only apply transformations that are ecma 5 safe
               // https://github.com/facebook/create-react-app/pull/4234
@@ -243,11 +217,7 @@ module.exports = function(webpackEnv) {
               comparisons: false,
               // Disabled because of an issue with Terser breaking valid code:
               // https://github.com/facebook/create-react-app/issues/5250
-<<<<<<< HEAD
-              // Pending futher investigation:
-=======
               // Pending further investigation:
->>>>>>> shh
               // https://github.com/terser-js/terser/issues/120
               inline: 2,
             },
@@ -356,10 +326,7 @@ module.exports = function(webpackEnv) {
               options: {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
-<<<<<<< HEAD
-=======
                 resolvePluginsRelativeTo: __dirname,
->>>>>>> shh
                 
               },
               loader: require.resolve('eslint-loader'),
@@ -379,11 +346,7 @@ module.exports = function(webpackEnv) {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
               loader: require.resolve('url-loader'),
               options: {
-<<<<<<< HEAD
-                limit: 10000,
-=======
                 limit: imageInlineSizeLimit,
->>>>>>> shh
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
@@ -404,12 +367,8 @@ module.exports = function(webpackEnv) {
                     {
                       loaderMap: {
                         svg: {
-<<<<<<< HEAD
-                          ReactComponent: '@svgr/webpack?-svgo,+ref![path]',
-=======
                           ReactComponent:
                             '@svgr/webpack?-svgo,+titleProp,+ref![path]',
->>>>>>> shh
                         },
                       },
                     },
@@ -636,17 +595,11 @@ module.exports = function(webpackEnv) {
           navigateFallbackBlacklist: [
             // Exclude URLs starting with /_, as they're likely an API call
             new RegExp('^/_'),
-<<<<<<< HEAD
-            // Exclude URLs containing a dot, as they're likely a resource in
-            // public/ and not a SPA route
-            new RegExp('/[^/]+\\.[^/]+$'),
-=======
             // Exclude any URLs whose last part seems to be a file extension
             // as they're likely a resource and not a SPA route.
             // URLs containing a "?" character won't be blacklisted as they're likely
             // a route with query params (e.g. auth callbacks).
             new RegExp('/[^/?]+\\.[^/]+$'),
->>>>>>> shh
           ],
         }),
       // TypeScript type checking
