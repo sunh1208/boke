@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
 import "./blogList.scss"
+import { getBlogListInfo } from "../../../server/index"
 import BlogItem from "../../../component/BlogItem";
 export default class blogList extends Component {
     state = {
-        list: [1, 2, 3, 4, 5]
+        list: null
+    }
+    componentDidMount() {
+        let that = this;
+        async function a() {
+            let data = await getBlogListInfo()
+            console.log(data)
+            that.setState({
+                list: data
+            })
+        }
+        a()
+        console.log(getBlogListInfo)
+        // this.setState({
+        //     list: data
+        // })
     }
     render() {
         let { list } = this.state;
@@ -11,8 +27,8 @@ export default class blogList extends Component {
             <div>
                 <div>
                     {
-                        list.map(item => {
-                            return <BlogItem item={item} >{{ item }} </BlogItem>
+                        list && list.map(item => {
+                            return <BlogItem {...this.props} item={item} key={item.blogId} > </BlogItem>
                         })
                     }
                 </div>

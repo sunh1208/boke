@@ -21,7 +21,7 @@ let routes = {
                     component: blogList,
                 },
                 {
-                    path: "/home/blogParticulars",
+                    path: "/home/blogParticulars/:id",
                     component: blogParticulars,
                 }, {
                     path: "/home/blogContent",
